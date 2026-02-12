@@ -24,14 +24,6 @@ local function check_available()
             available_keys[keyname] = 1
         end
     end
-
-    if M.custom_url ~= nil then
-        if M.custom_url.url == "" or M.custom_url.port == "" then
-            M.custom_url = { url = "http://127.0.0.1", port = "8080" }
-        else
-            M.custom_url = config.api.custom_url
-        end
-    end
 end
 
 function M.send_request()

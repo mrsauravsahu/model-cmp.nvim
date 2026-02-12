@@ -33,6 +33,10 @@ end
 
 function M.send(request_args, callback)
     local result = {}
+
+    -- log the curl command being called
+    require("model_cmp.logger").trace("Sending request: curl " .. table.concat(request_args, " "))
+    
     local job = Job:new({
         command = "curl",
         args = request_args,
@@ -41,6 +45,9 @@ function M.send(request_args, callback)
         end,
         on_exit = function()
             if callback then
+                -- Log the full response for debugging
+                require("model_cmp.logger").trace("Received response: " .. table.concat(result, "\n"))
+
                 -- Join all the output lines and send to callback
                 callback(table.concat(result, "\n"))
             end

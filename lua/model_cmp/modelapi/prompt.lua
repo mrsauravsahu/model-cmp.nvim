@@ -4,12 +4,13 @@ local M = {}
 
 M.default_systemrole = {
     role = "system",
-    content = [[Act as GitHub Copilot. Complete the code where the <missing> token is.
+    content = [[Act as a Coding Assistant. Complete the code where the <missing> token is.
 Follow the instructions:
 - Output the full line.
 - No explanations, no comments, no full files generations allowed.
 - Max code generation is 5 lines.
 - Match the language and indentation.
+- Output only current line with <missing> token without any new line character, do not output any other lines.
 ]],
 }
 
